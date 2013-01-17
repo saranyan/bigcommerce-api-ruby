@@ -53,7 +53,7 @@ module Bigcommerce
       request(:delete, path, options, headers)
     end
 
-    def request(method, path, options,headers={})
+    def request(method, path, options, headers)
       restclient = RestClient::Resource.new "#{@configuration[:store_url]}/api/v2#{path}.json", @configuration[:username], @configuration[:api_key]
       #disabling to test a bug
       # if @configuration[:ssl_client_key] && @configuration[:ssl_client_cert] && @configuration[:ssl_ca_file]
@@ -80,8 +80,8 @@ module Bigcommerce
                   
                     end
         JSON.parse response
-      rescue => e
-         {"error"=>"Nothing to parse. Possibly no data?"}.to_json
+      # rescue => e
+      #    {"error"=>"Nothing to parse. Possibly no data?"}.to_json
       end
       
     end
