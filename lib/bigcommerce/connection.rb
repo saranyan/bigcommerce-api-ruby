@@ -55,17 +55,18 @@ module Bigcommerce
 
     def request(method, path, options,headers={})
       restclient = RestClient::Resource.new "#{@configuration[:store_url]}/api/v2#{path}.json", @configuration[:username], @configuration[:api_key]
-      if @configuration[:ssl_client_key] && @configuration[:ssl_client_cert] && @configuration[:ssl_ca_file]
-        restclient = RestClient::Resource.new(
-          "#{@configuration[:store_url]}/api/v2#{path}.json",
-          :username => @configuration[:username], 
-          :password => @configuration[:api_key],
-          :ssl_client_cert  =>  @configuration[:ssl_client_cert],
-          :ssl_client_key   =>  @configuration[:ssl_client_key],
-          :ssl_ca_file      =>  @configuration[:ssl_ca_file],
-          :verify_ssl       =>  @configuration[:verify_ssl]
-        )
-      end
+      #disabling to test a bug
+      # if @configuration[:ssl_client_key] && @configuration[:ssl_client_cert] && @configuration[:ssl_ca_file]
+      #   restclient = RestClient::Resource.new(
+      #     "#{@configuration[:store_url]}/api/v2#{path}.json",
+      #     :username => @configuration[:username], 
+      #     :password => @configuration[:api_key],
+      #     :ssl_client_cert  =>  @configuration[:ssl_client_cert],
+      #     :ssl_client_key   =>  @configuration[:ssl_client_key],
+      #     :ssl_ca_file      =>  @configuration[:ssl_ca_file],
+      #     :verify_ssl       =>  @configuration[:verify_ssl]
+      #   )
+      # end
       begin
         response = case method
                     when :get then
