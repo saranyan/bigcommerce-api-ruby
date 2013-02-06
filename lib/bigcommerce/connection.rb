@@ -37,19 +37,19 @@ module Bigcommerce
       @configuration.client_cert = OpenSSL::X509::Certificate.new(File.read(path))
     end
 
-    def get(path, options = {})
+    def get(path, options)
       request(:get, path, options)
     end
 
-    def post(path, options = {})
+    def post(path, options)
       request(:post, path, options)
     end
 
-    def put(path, options = {})
+    def put(path, options)
       request(:put, path, options)
     end
 
-    def delete(path, options = {})
+    def delete(path, options)
       request(:delete, path, options)
     end
 
@@ -70,7 +70,7 @@ module Bigcommerce
       begin
         response = case method
                     when :get then
-                      restclient.get(:params => options.to_json, :accept => :json, :content_type => :json)
+                      restclient.get(:params => options, :accept => :json, :content_type => :json)
                     when :post then
                       restclient.post(options.to_json, :content_type => :json, :accept => :json)
                     when :put then
