@@ -37,7 +37,7 @@ module Bigcommerce
     end
 
     def get_time(options={})
-      @connection.get ('/time',options)
+      @connection.get('/time',options)
     end
 
     #brands
