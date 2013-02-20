@@ -36,8 +36,8 @@ module Bigcommerce
       datetime.strftime("%a, %d %b %Y %H:%M:%S %z")
     end
 
-    def get_time
-      @connection.get '/time'
+    def get_time(options={})
+      @connection.get ('/time',options)
     end
 
     #brands
