@@ -76,6 +76,24 @@ module Bigcommerce
        @connection.put("/categories/#{id}",options)
     end
 
+    #coupons
+
+    def get_coupons(options={})
+      @connection.get("/coupons",options)
+    end
+
+    def get_coupon(id)
+      @connection.get("/coupons/#{id}",{})
+    end
+
+    def create_coupons(options={})
+       @connection.post("/coupons",options)
+    end
+
+    def update_coupon(id,options={})
+       @connection.put("/coupons/#{id}",options)
+    end
+
     #country
 
     def get_countries(options={})
